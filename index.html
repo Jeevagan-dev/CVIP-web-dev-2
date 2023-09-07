@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODE EDITOR PROJECT</title>
+</head>
+<style>
+
+    body{
+        background-color: skyblue;
+    }
+    h1{
+        text-align: center;
+    }
+   .css{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   textarea{
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+   }
+
+   iframe{
+    width: 300px;
+    height: 300px;
+    text-align: center;
+   }
+
+@media only screen and (max-width:800px) {
+    .css{
+        flex-direction: column;
+        
+    }
+    textarea{
+        width: 275px;
+        height: 275px;
+    }
+
+    iframe{
+    width: 275px;
+    height: 275px;
+    text-align: center;
+
+   }
+
+}
+</style>
+<body>
+
+
+<h1>Code Editor Project</h1>
+
+<div class="editor">
+    <div class="css">
+
+        <textarea id="html-code" placeholder="Html code"></textarea> 
+        <textarea id="css-code" placeholder="Css Code"></textarea> 
+        <textarea id="js-code" placeholder="Javascript code"></textarea>
+    </div>
+   
+  <center> <iframe id="output"></iframe></center>
+       
+   
+</div>
+
+
+<script type="text/javascript"> 
+
+function run() {
+let htmlCode = document.querySelector(".editor #html-code").value;
+let cssCode = "<style>"+document.querySelector(".editor #css-code").value + "</style>";
+let jsCode = document.querySelector(".editor #js-code").value; 
+let output = document.querySelector(".editor #output"); 
+output.contentDocument.body.innerHTML = htmlCode+cssCode; 
+output.contentWindow.eval(jsCode);
+            
+}
+document.querySelector(".editor #html-code").addEventListener("keyup",run);
+document.querySelector(".editor #css-code").addEventListener("keyup",run);
+document.querySelector(".editor #js-code").addEventListener("keyup",run);
+
+
+</script>
+</body>
+</html>
